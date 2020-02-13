@@ -1,0 +1,5 @@
+Configuration cfg=new Configuration(); 
+cfg.addAnnotatedClass(com.tutorialspoint.hibernate.entity.Employee.class);
+cfg.configure();
+
+https://stackoverflow.com/questions/23214454/org-hibernate-mappingexception-unknown-entity-annotations-users
