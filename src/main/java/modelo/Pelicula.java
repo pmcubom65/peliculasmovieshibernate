@@ -3,11 +3,14 @@ package modelo;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
+@NamedStoredProcedureQuery(procedureName = "peliculasbefore2011", name = "test")
 @Entity(name="Pelicula")
 @Table(name="movies")
 public class Pelicula {
@@ -55,6 +58,16 @@ public class Pelicula {
 	
 	
 	
+
+	public String getMovie_id() {
+		return movie_id;
+	}
+
+
+	public void setMovie_id(String movie_id) {
+		this.movie_id = movie_id;
+	}
+
 
 	public String getTitulo() {
 		return titulo;

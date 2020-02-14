@@ -4,16 +4,16 @@ import java.util.List;
 
 public interface Dao<T, K> {
 
-    public void persist(T entity);
+    default public void persist(T entity) {};
     
-    public void update(T entity);
+    default public void update(T entity){};
      
-    public T findById(K id);
+    default public T findById(K id){ return null;};
      
-    public void delete(T entity);
+    default public void delete(T entity){};
      
-    public List<T> findAll();
+    default public List<T> findAll(){ return null;};
      
-    public void deleteAll();
+    default  public void deleteAll(){};
 	
 }

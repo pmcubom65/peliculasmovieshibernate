@@ -2,6 +2,8 @@ package dao;
 
 import java.util.List;
 
+import javax.persistence.NamedStoredProcedureQuery;
+
 import modelo.Pelicula;
 
 public class PeliculaDaoServicio {
@@ -55,7 +57,12 @@ public class PeliculaDaoServicio {
 	        return peliculadao;
 	    }
 	
-	
+	    public List<Pelicula> aplicarProcedimiento() {
+	    	peliculadao.openCurrentSessionwithTransaction();
+	    	List<Pelicula> pelis=peliculadao.procedimiento();
+	    	peliculadao.closeCurrentSessionwithTransaction();
+	    	return pelis;
+	    }
 	
 	
 }

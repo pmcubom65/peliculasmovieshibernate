@@ -3,3 +3,7 @@ cfg.addAnnotatedClass(com.tutorialspoint.hibernate.entity.Employee.class);
 cfg.configure();
 
 https://stackoverflow.com/questions/23214454/org-hibernate-mappingexception-unknown-entity-annotations-users
+
+
+
+https://stackoverflow.com/questions/29698164/jpa-2-1-error-no-namedstoredprocedurequery-was-found-with-that-name

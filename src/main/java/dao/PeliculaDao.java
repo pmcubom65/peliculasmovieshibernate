@@ -1,14 +1,21 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.StoredProcedureQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import modelo.Pelicula;
+
+
 
 public class PeliculaDao implements Dao<Pelicula, String> {
 
@@ -101,13 +108,37 @@ public class PeliculaDao implements Dao<Pelicula, String> {
 	}
 
 	public List<Pelicula> findAll() {
-	List<Pelicula> listado=	(List<Pelicula>) getCurrentSession().createQuery("from movies");
+		Query query = getCurrentSession().createQuery("from Pelicula");
+		List<Pelicula> listado=(List<Pelicula>) query.list();
+	
 		return listado;
-	}
+		}
 
 	public void deleteAll() {
 		findAll().forEach(i->getCurrentSession().delete(i));
 		
 	}
+	
+	
+	public List<Pelicula> procedimiento() {
+
+			Query query =	getCurrentSession().createNativeQuery("call peliculasbefore2011()");
+			List<Object[]> listado=query.list();
+			List<Pelicula> listados=new ArrayList<>();
+			
+			for(Object[] row : listado){
+				Pelicula p=new Pelicula();
+				p.setTitulo(row[1].toString());
+				p.setDirector(row[2].toString());
+				p.setMovie_id(row[0].toString());
+				p.setAnyo(row[3].toString());
+				p.setCategoria(row[4].toString());
+				listados.add(p);
+			
+			}
+			return listados;
+		}
+	
+
 	
 }
