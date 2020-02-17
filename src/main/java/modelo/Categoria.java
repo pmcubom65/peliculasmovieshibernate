@@ -1,9 +1,22 @@
 package modelo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity(name="Categoria")
+@Table(name="categories")
 public class Categoria {
 	
+	@Id
+	@Column(name="category_id")
 	private String category_id;
+	
+	@Column(name="category_name")
 	private String category_name;
+	
+	@Column(name="remarks")
 	private String remarks;
 	
 	public Categoria() {}

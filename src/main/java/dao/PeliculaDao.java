@@ -59,12 +59,6 @@ public class PeliculaDao implements Dao<Pelicula, String> {
         currentTransaction.commit();
         currentSession.close();
     }
-    
-    
-    
-    
-	
-	
 
 	public Session getCurrentSession() {
 		return currentSession;
@@ -123,6 +117,7 @@ public class PeliculaDao implements Dao<Pelicula, String> {
 	public List<Pelicula> procedimiento() {
 
 			Query query =	getCurrentSession().createNativeQuery("call peliculasbefore2011()");
+			
 			List<Object[]> listado=query.list();
 			List<Pelicula> listados=new ArrayList<>();
 			
